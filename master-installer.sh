@@ -49,10 +49,10 @@ if [[ $rsync_flag -eq 1 ]]; then
     sudo echo "read only = false" >> /etc/rsyncd.conf
 	
 	
-	sudo groupadd rsync
+	sudo groupadd hermes
 	sudo useradd hermes
 	sudo passwd hermes
-	sudo gpasswd -a rsync hermes
+	sudo gpasswd -a hermes hermes
 	
 	if [ -e /etc/init.d/firewall.sh ]
 	then

@@ -8,7 +8,7 @@ TMP_DIRECTORY="Tmp" 				#Emplacement des modules, relativement au dossier maitre
 CONFIG_DIRECTORY="Conf" 			#Emplacement des modules, relativement au dossier maitre
 NAME="default"
 
-rsync_flag=0;# 0 -> rien , 1 -> install et configuration de rsync
+rsync_flag=0; # 0 -> rien , 1 -> install et configuration de rsync
 #On traite les options 
 while getopts d:n:i name   ## les options acceptant un paramètres sont suivies de ":"
   do
@@ -41,7 +41,7 @@ TMP_DIRECTORY=$DIRECTORY/$TMP_DIRECTORY
 if [[ $rsync_flag -eq 1 ]]; then
 	sudo apt-get install rsync
 	sudo cp $CURRENT_DIR/Conf/rsync  /etc/default/rsync
-	sudo cp Config/rsyncd.conf /etc/rsyncd.conf 
+	sudo cp Conf/rsyncd.conf /etc/rsyncd.conf 
 	
 	sudo echo "[hermes_rsync]" >> /etc/rsyncd.conf
 	sudo echo "path = $TMP_DIRECTORY" >> /etc/rsyncd.conf

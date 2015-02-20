@@ -158,4 +158,4 @@ done
 ##
 
 #Synchronise with slaves
-sh master-slave-sync.sh $STORAGE_DIRECTORY
+bash master-slave-sync.sh $STORAGE_DIRECTORY

@@ -1,12 +1,13 @@
 #!/bin/bash
-
-if [ ! -e $1/Divers ]
+dir=$1/Divers
+if [ ! -e  $dir ]
 then
-	mkdir $1/Divers
+	mkdir $dir
 fi
 
 #Firefox
-cp -rf /home/severus/.mozilla $1/Divers/
+cp -rau /home/*/.mozilla $dir
+
 
 #Liferea
-cp -rf /home/severus/.liferea* $1/Divers/
+#cp -rf /home/severus/.liferea* $dir

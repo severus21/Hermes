@@ -2,7 +2,7 @@
 
 #Init
 CURRENT_DIR=`dirname $0` #Dossier parent du script d'installation
-DIRECTORY="/home/$(whoami)/Backup" #Dossier d'install
+DIRECTORY="/Backup/$(whoami)" #Dossier d'install
 MODULES_DIRECTORY="Modules" #Emplacement des modules, relativement au dossier maitre
 CONFIG_DIRECTORY="Conf" #Emplacement des modules, relativement au dossier maitre
 NAME="default"
@@ -62,7 +62,8 @@ if [[ -d $DIRECTORY ]]; then
 	exit 2
 fi
 
-mkdir -p $DIRECTORY
+sudo mkdir -p $DIRECTORY
+sudo chown -R $(whoami) $DIRECTORY
 mkdir $CONFIG_DIRECTORY
 mkdir $MODULES_DIRECTORY
 mkdir $DIRECTORY/current
@@ -82,3 +83,10 @@ mkdir $DIRECTORY/last
 	chmod -R 711 $DIRECTORY
 	chmod +x $DIRECTORY/client-handler.sh
 	chmod +x $DIRECTORY/client-master-sync.sh
+
+#Crontab
+cat <(crontab -l) <(echo "1 * * * * $DIRECTORY/client-handler.sh") | crontab -
+
+
+#On lance une premiere archive 
+bash $DIRECTORY/client-handler.sh

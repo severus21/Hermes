@@ -6,7 +6,7 @@ then
 fi
 
 #Firefox
-cp -rau /home/*/.mozilla $dir
+cp -ra /home/*/.mozilla $dir
 
 
 #Liferea

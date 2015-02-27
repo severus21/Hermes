@@ -95,4 +95,11 @@ mkdir $TMP_DIRECTORY
 	chmod -R 711 $DIRECTORY
 	chmod +x $DIRECTORY/master-handler.sh
 	chmod +x $DIRECTORY/master-slave-sync.sh
-	chown -R hermes:rsync $DIRECTORY
+	chown -R hermes:hermes $DIRECTORY
+
+
+##Crontab
+cat <(crontab -l) <(echo "* 4 * * * $DIRECTORY/master-handler.sh") | crontab -
+
+#On lance le deamon rsync
+/etc/init.d/rsync start

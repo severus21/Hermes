@@ -101,8 +101,6 @@ then
 	mkdir $hourDirectory
 fi
 
-
-
 #On rempli le dossier de sauvegarde
 files=`ls $MODULES_DIRECTORY | grep "backup-" `	
 for fichier in $files
@@ -114,7 +112,7 @@ done
 #End
 sh $DIRECTORY/client-master-sync.sh "$hourDirectory/"
 
-#On rebuild le dossier de sauvegarde, on supprime les fichiers temporairess
+#On rebuild le dossier de sauvegarde, on supprime les fichiers temporaires
 files=`ls $MODULES_DIRECTORY | grep "prune-" `	
 for fichier in $files
 do

@@ -126,6 +126,9 @@ for dir in $(ls $TMP_DIRECTORY)
 do
 	mkdir -p $DAILY_PATH/$dir
 	rsync -cuar $TMP_DIRECTORY/$dir $DAILY_PATH/
+	tar -cvf "$DAILY_PATH/$dir.tar" $DAILY_PATH/$dir && xz -z -6e "$DAILY_PATH/$dir.tar"
+	rm "$DAILY_PATH/$dir.tar"
+	rm -r $DAILY_PATH/$dir
 done
 
 ##

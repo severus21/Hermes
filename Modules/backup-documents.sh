@@ -7,5 +7,5 @@ then
 fi
 
 
-find /home \( -iname "*.pdf" -o -iname "*.tex" -o -iname "*.ods" -o -iname "*.odt" -o -iname "*.odp" -o -iname "*.odg" \) -not \( -path "*cache*" -o -path "*/.*" -o -path "*$1*" \) -exec bash $CURRENT_DIR/backup-exec.sh {} $dir \;
+find /home \( -iname "*.pdf" -o -iname "*.tex" -o -iname "*.ods" -o -iname "*.odt" -o -iname "*.odp" -o -iname "*.odg" \) -not \( -path "*cache*" -o -path "*/.*" \) -exec bash $CURRENT_DIR/backup-exec.sh {} $dir \;
 

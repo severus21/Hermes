@@ -6,8 +6,7 @@ then
 	mkdir $dir
 fi
 
-
-find /home \( \( -iname "*.jpeg" -o -iname "*.jpg"  -o -iname "*.png" \) -not \( -path "*cache*" -o -path "*/.*" -o -path "*$1*" \) \)  -exec bash $CURRENT_DIR/backup-exec.sh {} $dir \;
+find /home \( \( -iname "*.jpeg" -o -iname "*.jpg"  -o -iname "*.png" \) -not \( -path "*cache*" -o -path "*/.*" \) \)  -exec bash $CURRENT_DIR/backup-exec.sh {} $dir \;
 
 #/media ??
 

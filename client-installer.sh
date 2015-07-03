@@ -37,7 +37,7 @@ MODULES_DIRECTORY=$DIRECTORY/$MODULES_DIRECTORY
 #	Rsync install and conf
 ##
 if [[ $rsync_flag -eq 1 ]]; then
-	sudo apt-get install rsync
+	sudo apt-get install rsync cron
 	
 	if [ -e /etc/init.d/firewall.sh ]
 	then
@@ -85,6 +85,7 @@ mkdir $DIRECTORY/last
 	chmod +x $DIRECTORY/client-master-sync.sh
 
 #Crontab
+sudo gpasswd -a $(whoami) crontab
 cat <(crontab -l) <(echo "1 * * * * $DIRECTORY/client-handler.sh") | crontab -
 
 

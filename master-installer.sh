@@ -39,7 +39,7 @@ TMP_DIRECTORY=$DIRECTORY/$TMP_DIRECTORY
 #	Rsync install and conf
 ##
 if [[ $rsync_flag -eq 1 ]]; then
-	sudo apt-get install rsync
+	sudo apt-get install rsync cron
 	sudo cp $CURRENT_DIR/Conf/rsync  /etc/default/rsync
 	sudo cp Conf/rsyncd.conf /etc/rsyncd.conf 
 	
@@ -99,6 +99,7 @@ mkdir $TMP_DIRECTORY
 
 
 ##Crontab
+sudo gpasswd -a $(whoami) crontab
 cat <(crontab -l) <(echo "* 4 * * * $DIRECTORY/master-handler.sh") | crontab -
 
 #On lance le deamon rsync
